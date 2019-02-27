@@ -106,7 +106,6 @@ function render_bs_customer_opinions_render($opinions)
 
 function render_bs_customer_opinions($attributes)
 {
-	echo 'hola';
 	$max_opinions = isset($attributes['max_opinions']) ? $attributes['max_opinions'] : 6;
 	$title = $attributes['title'];
 	$args = array(
