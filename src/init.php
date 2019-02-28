@@ -88,7 +88,7 @@ function render_bs_customer_opinions_render($opinions)
 		$content = get_the_content();
 		$image = get_the_post_thumbnail_url(get_the_ID());
 		$html .= '
-			<div class="ml-card-testimony l-flex l-flex--justify-center l-column--1-2 l-column--mobile--1-1 a-mar u-shadow--bottom l-flex--align-center">
+			<div class="ml-card-testimony l-flex l-flex--justify-center l-flex--mobile--direction-column l-column--1-2 l-column--mobile--1-1 a-mar u-shadow--bottom l-flex--align-center">
 				<picture class="a-pad">
 					<img class="a-image a-image--avatar " src="' . esc_url($image) . '">
 				</picture>

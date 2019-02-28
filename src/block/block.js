@@ -27,13 +27,14 @@ registerBlockType('bonseo/block-bs-customer-opinions', {
 				<TextControl
 					className={`${className}__title`}
 					label={__('Encabezado del bloque:')}
-					value={attributes.title != undefined ? attributes.title : 'Encabezado'}
+					value={attributes.title}
 					onChange={title => setAttributes({title})}
 				/>
 				<TextControl
 					className={`${className}__length`}
+					type="number"
 					label={__('Cuantas opiniones queire mostrar:')}
-					value={attributes.max_comments != undefined ? attributes.max_comments : 6}
+					value={attributes.max_comments}
 					onChange={max_comments => setAttributes({max_comments})}
 				/>
 			</div>
