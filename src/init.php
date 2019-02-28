@@ -24,6 +24,9 @@ register_block_type('bonseo/' . $block,
 			),
 			'max_opinions' => array(
 				'type' => 'string',
+			),
+			'className' => array(
+				'type' => 'string',
 			)
 		),
 		'render_callback' => 'render_bs_customer_opinions',
@@ -106,8 +109,9 @@ function render_bs_customer_opinions_render($opinions)
 
 function render_bs_customer_opinions($attributes)
 {
-	$max_opinions = isset($attributes['max_opinions']) ? $attributes['max_opinions'] : 6;
-	$title = $attributes['title'];
+	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
+	$max_opinions = isset($attributes['max_opinions']) ? $attributes['max_opinions'] : 3;
+	$title = isset($attributes['title']) ? $attributes['title'] : '';
 	$args = array(
 		'post_type' => 'opinion',
 		'post_status' => 'publish',
@@ -119,7 +123,7 @@ function render_bs_customer_opinions($attributes)
 	}
 
 	return '
-		<section class="og-block-testimony a-pad-40">
+		<section class="og-block-testimony a-pad-40' . $class . '">
 			<h2 class="a-text a-text--xl  ">
         		' . $title . '
   		    </h2>
