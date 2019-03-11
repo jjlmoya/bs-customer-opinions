@@ -76,6 +76,51 @@ function bs_register_opinion_post_type()
 }
 
 add_action('init', 'bs_register_opinion_post_type');
+add_action('add_meta_boxes', 'bs_opinion_metabox_add');
+add_action('save_post', 'bs_opinion_on_save');
+
+
+function bs_opinion_metabox_add()
+{
+	add_meta_box(
+		'bs_theme_brand',
+		'Theme',
+		'bs_opinion_brand_action',
+		'opinion',
+		'side',
+		'high'
+	);
+}
+
+function bs_opinion_brand_action()
+{
+	global $post;
+	wp_nonce_field(basename(__FILE__), 'bs_theme_brand');
+	$location = get_post_meta($post->ID, 'bs_theme_brand', true);
+	echo '<input type="text" name="bs_theme_brand" value="' . esc_textarea($location) . '" class="widefat">';
+}
+
+
+function bs_opinion_on_save($post_id)
+{
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+		return;
+	}
+	if (isset($_POST['post_type']) && $_POST['post_type'] == 'opinion') {
+		if (!current_user_can('edit_page', $post_id)) {
+			return;
+		}
+	} else {
+		if (!current_user_can('edit_post', $post_id)) {
+			return;
+		}
+	}
+	if (!isset($_POST['bs_theme_brand'])) {
+		return;
+	}
+	$myBrand = sanitize_text_field($_POST['bs_theme_brand']);
+	update_post_meta($post_id, 'bs_theme_brand', $myBrand);
+}
 
 
 require_once plugin_dir_path(__FILE__) . 'src/init.php';
