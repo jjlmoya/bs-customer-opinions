@@ -5,9 +5,6 @@
  * Simple block, renders and saves the same content without any interactivity.
  */
 
-import './style.scss';
-import './editor.scss';
-
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {TextControl} = wp.components;
@@ -34,8 +31,8 @@ registerBlockType('bonseo/block-bs-customer-opinions', {
 					className={`${className}__length`}
 					type="number"
 					label={__('Cuantas opiniones queire mostrar:')}
-					value={attributes.max_comments}
-					onChange={max_comments => setAttributes({max_comments})}
+					value={attributes.max_opinions}
+					onChange={max_opinions => setAttributes({max_opinions})}
 				/>
 			</div>
 		);

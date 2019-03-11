@@ -33,24 +33,6 @@ register_block_type('bonseo/' . $block,
 	)
 );
 
-
-/**
- * Enqueue Gutenberg block assets for both frontend + backend.
- *
- * @uses {wp-editor} for WP editor styles.
- * @since 1.0.0
- */
-function bs_customer_opinions_assets()
-{
-	wp_enqueue_style(
-		'bs_customer_opinions-style-css',
-		plugins_url('dist/blocks.style.build.css', dirname(__FILE__)),
-		array('wp-editor')
-	);
-}
-
-add_action('enqueue_block_assets', 'bs_customer_opinions_assets');
-
 /**
  * Enqueue Gutenberg block assets for backend editor.
  *
@@ -69,14 +51,6 @@ function bs_customer_opinions_editor_assets()
 		array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), // Dependencies, defined above.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: File modification time.
 		true // Enqueue the script in the footer.
-	);
-
-	// Styles.
-	wp_enqueue_style(
-		'bs_customer_opinions-block-editor-css', // Handle.
-		plugins_url('dist/blocks.editor.build.css', dirname(__FILE__)), // Block editor CSS.
-		array('wp-edit-blocks') // Dependency to include the CSS after it.
-	// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
 	);
 }
 
@@ -123,7 +97,7 @@ function render_bs_customer_opinions($attributes)
 	}
 
 	return '
-		<section class="og-block-testimony a-pad-40' . $class . '">
+		<section class="og-block-testimony a-pad-40 ' . $class . '">
 			<h2 class="a-text a-text--xl  ">
         		' . $title . '
   		    </h2>
