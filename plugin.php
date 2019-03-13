@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Customer Opinions [BonSeo Block]
- * Plugin URI: https://www.bonseo.es/wordpress-gutenberg-blocks/customer-opinions
+ * Plugin URI: https://www.bonseo.es/bloques-gutenberg/customer-opinions
  * Description: Un bloque Gutenberg para mostrar las opiniones de los clientes
  * Author: jjlmoya
  * Author URI: https://www.bonseo.es/
