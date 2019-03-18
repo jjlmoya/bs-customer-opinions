@@ -15,6 +15,21 @@
 if (!defined('ABSPATH')) {
 	exit;
 }
+if (!in_array('bs-core/plugin.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+	add_action('admin_notices', function () {
+		global $pagenow;
+		if ($pagenow == "plugins.php") {
+			?>
+			<div id="updated" class="error notice is-dismissible">
+				<p> Puede que algunos plugins vean afectados su comportamiento y estilo debido a que no se ha instalado
+					la dependencia con el Plugin "BS-CORE" disponible gratuitamente en https://bonseo.es/plugins</p>
+			</div>
+			<?php
+		}
+	});
+	return;
+}
+
 
 
 if (!function_exists('bs_create_block_category')) {
